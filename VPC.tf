@@ -1,3 +1,7 @@
+provider "aws" {
+    region = "us-west-1"
+}
+
 #vpc with /16 CIDR, first two octets are reserved for network.
 resource "aws_vpc" "VPC1" {
     cidr_block = "10.0.0.0/16"
