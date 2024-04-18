@@ -55,7 +55,7 @@ resource "aws_internet_gateway" "IG-01"{
 
 #NAT gateway for private subnet to get private/secure internet access via AWS network
 resource "aws_nat_gateway" "NAT-01" {
-  subnet_id     = aws_subnet.private1.id
+  subnet_id = aws_subnet.private1.id
 
   tags = {
     Name = "AWS_VPC1"
@@ -63,7 +63,7 @@ resource "aws_nat_gateway" "NAT-01" {
 
 }
 
-#route table for public subnet
+#route table for public subnet, route gives IG internet connection.
 resource "aws_route_table" "RT-Public" {
     vpc_id = aws_vpc.VPC1.id
 
@@ -77,7 +77,7 @@ resource "aws_route_table" "RT-Public" {
     }
 }
 
-#route table for private subnet
+#route table for private subnet, route all external traffic to NAT-01.
 resource "aws_route_table" "RT-Private" {
     vpc_id = aws_vpc.VPC1.id
 
