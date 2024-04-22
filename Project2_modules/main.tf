@@ -40,24 +40,25 @@ resource "aws_subnet" "public_subnet_az2" {
   cidr_block              = var.public_subnet_az2_cidr
   availability_zone       = data.aws_availability_zones.available_zones.names[1]
   #index list, chooses second AZ
-  map_public_ip_on_launch = 
+  map_public_ip_on_launch = true
 
   tags      = {
-    Name    = 
+    Name    = "public subnet az2"
   }
 }
 
 # create route table and add public route
 resource "aws_route_table" "public_route_table" {
-  vpc_id       = 
+  vpc_id       = aws_vpc.vpc.id
 
   route {
-    cidr_block = 
-    gateway_id = 
+    cidr_block = "0.0.0.0/0"
+#anywhere on the internet
+    gateway_id = aws_internet_gateway.internet_gateway.id
   }
 
   tags       = {
-    Name     = 
+    Name     = "public route table"
   }
 }
 
