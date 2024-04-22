@@ -1,16 +1,16 @@
-variable "ec2_ami_id" {
-    type = string
+variable "region" {
+
+}
+variable "project_name" {
+
+}
+variable "vpc_cidr" {
+
+}
+variable "public_subnet_az1_cidr" {
+
 }
 
-variable "ec2_instance_type" {
-    type = string
-    default = "t3.micro"
-}
-
-variable "instance_amount" {
-    type = number
-}
-
-variable "ec2_instance_name" {
-    type = string
+variable "public_subnet_az2_cidr" {
+    
 }
